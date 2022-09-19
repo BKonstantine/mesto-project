@@ -1,0 +1,130 @@
+<!DOCTYPE html>
+<html lang="ru">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <link rel="stylesheet" href="./pages/index.css" />
+    <title>Mesto</title>
+  </head>
+  <body class="page">
+    <header class="header">
+      <div class="logo"></div>
+    </header>
+    <main class="content">
+      <section class="profile">
+        <div class="profile__avatar"></div>
+        <div class="profile__info">
+          <div class="profile__content">
+            <h1 class="profile__name">Жак-Ив Кусто</h1>
+            <button class="profile__edit-button" type="button"></button>
+          </div>
+          <p class="profile__bio">Исследователь океана</p>
+        </div>
+        <button class="profile__add-button" type="button"></button>
+      </section>
+      <section class="photo-grid" aria-label="Места"></section>
+    </main>
+    <footer class="footer">
+      <p class="footer__copyright">&copy; 2020 Mesto Russia</p>
+    </footer>
+    <div id="popup-bio" class="popup">
+      <div class="popup__container">
+        <h2 class="popup__title">Редактировать профиль</h2>
+        <form class="popup__form popup__form-bio" name="popup-form" novalidate>
+          <input
+            id="popup__input-name"
+            type="text"
+            name="name"
+            class="popup__input popup__input_value_name"
+            placeholder="Имя"
+            minlength="2"
+            maxlength="40"
+            required
+          />
+          <span class="popup__input-name-error popup__input-error"></span>
+          <input
+            id="popup__input-bio"
+            type="text"
+            name="bio"
+            class="popup__input popup__input_value_bio"
+            placeholder="О себе"
+            minlength="2"
+            maxlength="40"
+            required
+          />
+          <span class="popup__input-bio-error popup__input-error"></span>
+          <button class="popup__button" type="submit">Сохранить</button>
+        </form>
+        <button
+          id="popup__close-button-bio"
+          class="popup__close-button"
+          type="button"
+        ></button>
+      </div>
+    </div>
+    <div id="popup-place" class="popup">
+      <div class="popup__container">
+        <h2 class="popup__title">Новое место</h2>
+        <form
+          class="popup__form popup__form-place"
+          name="popup-form"
+          novalidate
+        >
+          <input
+            id="popup__input-place"
+            type="text"
+            name="name"
+            class="popup__input popup__input_value_place"
+            placeholder="Название"
+            minlength="2"
+            maxlength="30"
+            required
+          />
+          <span class="popup__input-place-error popup__input-error"></span>
+          <input
+            id="popup__input-link"
+            type="url"
+            name="bio"
+            class="popup__input popup__input_value_link"
+            placeholder="Ссылка на картинку"
+            required
+          />
+          <span class="popup__input-link-error popup__input-error"></span>
+          <button class="popup__button" type="submit">Создать</button>
+        </form>
+        <button
+          id="popup__close-button-place"
+          class="popup__close-button"
+          type="button"
+        ></button>
+      </div>
+    </div>
+    <div id="popup-image" class="popup popup_theme_dark">
+      <div class="popup__container-image">
+        <img
+          src="https://pictures.s3.yandex.net/frontend-developer/cards-compressed/baikal.jpg"
+          alt="Байкал"
+          class="popup__image-place"
+        />
+        <p class="popup__image-title"></p>
+        <button id="popup__close-button-image"
+          class="popup__close-button"
+          type="button"
+        ></button>
+      </div>
+    </div>
+    <template class="card-template">
+      <article class="card">
+        <button class="card__trash" type="button"></button>
+        <img src="#" alt="#" class="card__image" />
+        <div class="card__content">
+          <h3 class="card__title"></h3>
+          <button class="card__like" type="button"></button>
+        </div>
+      </article>
+    </template>
+    <script src="./scripts/index.js"></script>
+    <script src="./scripts/validate.js"></script>
+  </body>
+</html>
