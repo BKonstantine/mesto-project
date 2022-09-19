@@ -1,0 +1,23 @@
+{
+  "name": "mesto-project",
+  "version": "1.0.0",
+  "description": "Интерактивная страница, куда можно добавлять фотографии, удалять их и ставить лайки.\r Данный проект является продолжением проекта [Mesto](https://github.com/BKonstantine/mesto) который выполнялся на потоке Веб-разработчик (48 когорта)",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/BKonstantine/mesto-project.git"
+  },
+  "keywords": [],
+  "author": "",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/BKonstantine/mesto-project/issues"
+  },
+  "homepage": "https://github.com/BKonstantine/mesto-project#readme",
+  "devDependencies": {
+    "webpack": "^5.74.0"
+  }
+}
