@@ -3,8 +3,7 @@
   <head>
     <meta charset="UTF-8" />
     <meta http-equiv="X-UA-Compatible" content="IE=edge" />
-    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <link rel="stylesheet" href="./pages/index.css" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />    
     <title>Mesto</title>
   </head>
   <body class="page">
@@ -40,6 +39,7 @@
             placeholder="Имя"
             minlength="2"
             maxlength="40"
+            pattern="[a-zA-Zа-яА-Я\-\s]+"
             required
           />
           <span class="popup__input-name-error popup__input-error"></span>
@@ -50,7 +50,8 @@
             class="popup__input popup__input_value_bio"
             placeholder="О себе"
             minlength="2"
-            maxlength="40"
+            maxlength="200"
+            pattern="[a-zA-Zа-яА-Я\-\s]+"
             required
           />
           <span class="popup__input-bio-error popup__input-error"></span>
@@ -74,18 +75,19 @@
           <input
             id="popup__input-place"
             type="text"
-            name="name"
+            name="place"
             class="popup__input popup__input_value_place"
             placeholder="Название"
             minlength="2"
             maxlength="30"
+            pattern="[a-zA-Zа-яА-Я\-\s]+"
             required
           />
           <span class="popup__input-place-error popup__input-error"></span>
           <input
             id="popup__input-link"
             type="url"
-            name="bio"
+            name="link"
             class="popup__input popup__input_value_link"
             placeholder="Ссылка на картинку"
             required
@@ -108,7 +110,8 @@
           class="popup__image-place"
         />
         <p class="popup__image-title"></p>
-        <button id="popup__close-button-image"
+        <button
+          id="popup__close-button-image"
           class="popup__close-button"
           type="button"
         ></button>
@@ -123,8 +126,6 @@
           <button class="card__like" type="button"></button>
         </div>
       </article>
-    </template>
-    <script src="./scripts/index.js"></script>
-    <script src="./scripts/validate.js"></script>
+    </template>      
   </body>
 </html>

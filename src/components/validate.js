@@ -26,8 +26,21 @@ const hideInputError = (formElement, inputElement, setting) => {
 
 /* функция проверки формы на валидность */
 const isValid = (formElement, inputElement, setting) => {
+  if (inputElement.validity.patternMismatch) {
+    inputElement.setCustomValidity(
+      "Разрешены только латинские, кириллические буквы, знаки дефиса и пробелы"
+    );
+  } else {
+    inputElement.setCustomValidity("");
+  }
+
   if (!inputElement.validity.valid) {
-    showInputError(formElement, inputElement, inputElement.validationMessage, setting);
+    showInputError(
+      formElement,
+      inputElement,
+      inputElement.validationMessage,
+      setting
+    );
   } else {
     hideInputError(formElement, inputElement, setting);
   }
@@ -92,11 +105,14 @@ const enableValidation = (setting) => {
   });
 };
 
-enableValidation({
-  formSelector: ".popup__form",
-  inputSelector: ".popup__input",
-  submitButtonSelector: ".popup__button",
-  inactiveButtonClass: "popup__button_disabled",
-  inputErrorClass: "popup__input_type_error",
-  errorClass: "popup__input-error_active",
-});
+export {
+  validationResetSetting,
+  showInputError,
+  hideInputError,
+  isValid,
+  hasInvalidInput,
+  resetValid,
+  toggleButtonState,
+  setEventListeners,
+  enableValidation
+};
