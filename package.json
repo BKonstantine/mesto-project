@@ -4,7 +4,7 @@
   "description": "Интерактивная страница, куда можно добавлять фотографии, удалять их и ставить лайки.\r Данный проект является продолжением проекта [Mesto](https://github.com/BKonstantine/mesto) который выполнялся на потоке Веб-разработчик (48 когорта)",
   "main": "index.js",
   "scripts": {
-    "build": "rd /s /q dist && webpack --mode",
+    "build": "webpack --mode production",
     "dev": "webpack serve"
   },
   "repository": {
