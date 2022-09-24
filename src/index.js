@@ -1,6 +1,6 @@
-import { closePopup } from "./utils.js";
+import { closePopup } from "./components/utils.js";
 
-import { renderCard } from "./card.js";
+import { renderCard } from "./components/card.js";
 
 import {
   popups,
@@ -12,9 +12,9 @@ import {
   openAddCard,
   handleProfileFormSubmit,
   handleImageFormSubmit,
-} from "./modal.js";
+} from "./components/modal.js";
 
-import { enableValidation } from "./validate.js";
+import { enableValidation } from "./components/validate.js";
 
 /* вставить стартовый нобор карточек */
 renderCard();
