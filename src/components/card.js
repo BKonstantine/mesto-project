@@ -1,38 +1,6 @@
-import { togglePopupImage } from "./modal.js";
+import { cardTemplate } from "./variables.js";
 
-/* стартовый набор для блока card */
-const initialCards = [
-  {
-    name: "Архыз",
-    link: "https://pictures.s3.yandex.net/frontend-developer/cards-compressed/arkhyz.jpg",
-  },
-  {
-    name: "Челябинская область",
-    link: "https://pictures.s3.yandex.net/frontend-developer/cards-compressed/chelyabinsk-oblast.jpg",
-  },
-  {
-    name: "Иваново",
-    link: "https://pictures.s3.yandex.net/frontend-developer/cards-compressed/ivanovo.jpg",
-  },
-  {
-    name: "Камчатка",
-    link: "https://pictures.s3.yandex.net/frontend-developer/cards-compressed/kamchatka.jpg",
-  },
-  {
-    name: "Холмогорский район",
-    link: "https://pictures.s3.yandex.net/frontend-developer/cards-compressed/kholmogorsky-rayon.jpg",
-  },
-  {
-    name: "Байкал",
-    link: "https://pictures.s3.yandex.net/frontend-developer/cards-compressed/baikal.jpg",
-  },
-];
-
-/* получаем доступ к секции photo-grid */
-const photoGrid = document.querySelector(".photo-grid");
-
-/* получаем доступ к шаблону карточек */
-const cardTemplate = document.querySelector(".card-template").content;
+import { togglePopupImage } from "../index.js";
 
 /* функция создания карточки */
 function createCard(item) {
@@ -60,24 +28,9 @@ function createCard(item) {
   return cardItem;
 }
 
-/* функция отрисовки карточки */
-function renderCard() {
-  const cardList = initialCards.map((item) => {
-    return createCard(item);
-  });
-  photoGrid.append(...cardList);
-}
-
 /* функция удаления карточки */
 function deleteItem(item) {
   item.remove();
 }
 
-export {
-  initialCards,
-  photoGrid,
-  cardTemplate,
-  createCard,
-  renderCard,
-  deleteItem,
-};
+export { createCard, deleteItem };
