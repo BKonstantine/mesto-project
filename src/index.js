@@ -2,7 +2,6 @@ import "./index.css";
 
 import {
   validationResetSetting,
-  initialCards,
   photoGrid,
   popupBio,
   popupPlace,
@@ -28,7 +27,7 @@ import { resetValid, enableValidation } from "./components/validate.js";
 
 import { openPopup, closePopup } from "./components/modal.js";
 
-import { getInitialCards } from "./components/api.js";
+import { getInitialCards, getProfileContent } from "./components/api.js";
 
 /* функция открытия попапа профиля*/
 function openProfileEdit() {
@@ -83,9 +82,16 @@ function renderCard(array) {
 }
 
 /* вставить стартовый нобор карточек */
-getInitialCards()
+getInitialCards().then((result) => {
+  renderCard(result);
+});
+
+/* Загружаем информацию о пользователе с сервера */
+getProfileContent()
   .then((result) => {
-    renderCard(result);
+    console.log(result);
+    profileName.textContent = result.name;
+    profileBio.textContent = result.about;
 });
 
 enableValidation({
