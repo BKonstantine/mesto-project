@@ -11,6 +11,7 @@ import {
   buttonAdd,
   profileName,
   profileBio,
+  profileAvatar,
   popupImagePlace,
   popupImageTitle,
   popupFormBio,
@@ -92,6 +93,7 @@ getProfileContent()
     console.log(result);
     profileName.textContent = result.name;
     profileBio.textContent = result.about;
+    profileAvatar.src = result.avatar;
 });
 
 enableValidation({

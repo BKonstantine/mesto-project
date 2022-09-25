@@ -53,9 +53,10 @@ const popups = document.querySelectorAll(".popup");
 const buttonEdit = profile.querySelector(".profile__edit-button");
 const buttonAdd = profile.querySelector(".profile__add-button");
 
-/* получаем доступ к name и bio пользователя */
+/* получаем доступ к name, bio и avatar пользователя */
 const profileName = profile.querySelector(".profile__name");
 const profileBio = profile.querySelector(".profile__bio");
+const profileAvatar = profile.querySelector(".profile__avatar");
 
 /* получаем доступ к карточке и ее названию в попапе*/
 const popupImagePlace = popupImage.querySelector(".popup__image-place");
@@ -83,6 +84,7 @@ export {
   buttonAdd,
   profileName,
   profileBio,
+  profileAvatar,
   popupImagePlace,
   popupImageTitle,
   popupFormBio,

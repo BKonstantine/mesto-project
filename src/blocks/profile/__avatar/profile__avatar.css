@@ -4,10 +4,8 @@
   flex: none;
   margin-right: 30px;
   border-radius: 50%;
-  background-image: url(../../../images/avatar/khusto.png);
-  background-size: cover;
-  background-repeat: no-repeat;
-  background-position: center;
+  object-position: center;
+  object-fit: cover;  
 }
 
 @media screen and (max-width: 700px) {
