@@ -89,8 +89,7 @@ getInitialCards().then((result) => {
 
 /* Загружаем информацию о пользователе с сервера */
 getProfileContent()
-  .then((result) => {
-    console.log(result);
+  .then((result) => {    
     profileName.textContent = result.name;
     profileBio.textContent = result.about;
     profileAvatar.src = result.avatar;
