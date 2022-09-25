@@ -1,13 +1,3 @@
-/* объект для сброса настроек валидации */
-const validationResetSetting = {
-  formSelector: ".popup__form",
-  inputSelector: ".popup__input",
-  submitButtonSelector: ".popup__button",
-  inactiveButtonClass: "popup__button_disabled",
-  inputErrorClass: "popup__input_type_error",
-  errorClass: "popup__input-error_active",
-};
-
 /* функция отображения ошибки валидации */
 const showInputError = (formElement, inputElement, errorMessage, setting) => {
   const errorElement = formElement.querySelector(`.${inputElement.id}-error`);
@@ -106,7 +96,6 @@ const enableValidation = (setting) => {
 };
 
 export {
-  validationResetSetting,
   showInputError,
   hideInputError,
   isValid,
@@ -114,5 +103,5 @@ export {
   resetValid,
   toggleButtonState,
   setEventListeners,
-  enableValidation
+  enableValidation,
 };
