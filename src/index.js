@@ -73,15 +73,15 @@ function handleImageFormSubmit(evt) {
   popupFormPlace.reset();
 }
 /* функция отрисовки карточки */
-function renderCard() {
-  const cardList = initialCards.map((item) => {
+function renderCard(array) {
+  const cardList = array.map((item) => {
     return createCard(item);
   });
   photoGrid.append(...cardList);
 }
 
 /* вставить стартовый нобор карточек */
-renderCard();
+renderCard(initialCards);
 
 enableValidation({
   formSelector: ".popup__form",
