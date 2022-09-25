@@ -28,6 +28,8 @@ import { resetValid, enableValidation } from "./components/validate.js";
 
 import { openPopup, closePopup } from "./components/modal.js";
 
+import { getInitialCards } from "./components/api.js";
+
 /* функция открытия попапа профиля*/
 function openProfileEdit() {
   openPopup(popupBio);
@@ -81,7 +83,10 @@ function renderCard(array) {
 }
 
 /* вставить стартовый нобор карточек */
-renderCard(initialCards);
+getInitialCards()
+  .then((result) => {
+    renderCard(result);
+});
 
 enableValidation({
   formSelector: ".popup__form",
