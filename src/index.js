@@ -1,22 +1,84 @@
-import './index.css'
-
-import { closePopup } from "./components/utils.js";
-
-import { renderCard } from "./components/card.js";
+import "./index.css";
 
 import {
+  validationResetSetting,
+  initialCards,
+  photoGrid,
+  popupBio,
+  popupPlace,
+  popupImage,
   popups,
   buttonEdit,
   buttonAdd,
+  profileName,
+  profileBio,
+  popupImagePlace,
+  popupImageTitle,
   popupFormBio,
+  formItemName,
+  formItemBio,
   popupFormPlace,
-  openProfileEdit,
-  openAddCard,
-  handleProfileFormSubmit,
-  handleImageFormSubmit,
-} from "./components/modal.js";
+  formItemPlace,
+  formItemLink,
+} from "./components/variables.js";
 
-import { enableValidation } from "./components/validate.js";
+import { createCard } from "./components/card.js";
+
+import { resetValid, enableValidation } from "./components/validate.js";
+
+import { openPopup, closePopup } from "./components/modal.js";
+
+/* функция открытия попапа профиля*/
+function openProfileEdit() {
+  openPopup(popupBio);
+  formItemName.value = profileName.textContent;
+  formItemBio.value = profileBio.textContent;
+  resetValid(validationResetSetting, popupBio);
+}
+
+/* функция открытия попапа добавления карточки */
+function openAddCard() {
+  openPopup(popupPlace);
+  popupFormPlace.reset();
+  resetValid(validationResetSetting, popupPlace);
+}
+
+/* функция добавления и закрытия попапа для изображений */
+function togglePopupImage(link, title) {
+  popupImagePlace.src = link;
+  popupImageTitle.textContent = title;
+  popupImagePlace.alt = title;
+
+  openPopup(popupImage);
+}
+
+/* функция отправки формы профиля */
+function handleProfileFormSubmit(evt) {
+  evt.preventDefault();
+  profileName.textContent = formItemName.value;
+  profileBio.textContent = formItemBio.value;
+
+  closePopup(popupBio);
+}
+
+/* функция отправки формы карточки */
+function handleImageFormSubmit(evt) {
+  evt.preventDefault();
+  const place = createCard({
+    name: formItemPlace.value,
+    link: formItemLink.value,
+  });
+  photoGrid.prepend(place);
+  closePopup(popupPlace);
+  popupFormPlace.reset();
+}
+/* функция отрисовки карточки */
+function renderCard() {
+  const cardList = initialCards.map((item) => {
+    return createCard(item);
+  });
+  photoGrid.append(...cardList);
+}
 
 /* вставить стартовый нобор карточек */
 renderCard();
@@ -46,3 +108,5 @@ popups.forEach((popup) => {
     }
   });
 });
+
+export { togglePopupImage };
