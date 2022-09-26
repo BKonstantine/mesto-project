@@ -79,13 +79,7 @@ function handleImageFormSubmit(evt) {
         link: result.link,
       });
       photoGrid.prepend(place);
-    })
-
-  /* const place = createCard({
-    name: formItemPlace.value,
-    link: formItemLink.value,
-  });
-  photoGrid.prepend(place); */
+    })  
   closePopup(popupPlace);
   popupFormPlace.reset();
 }
