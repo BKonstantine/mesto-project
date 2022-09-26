@@ -26,5 +26,22 @@ const getProfileContent = () => {
     }
     return Promise.reject(`Ошибка: ${res.status}`);
   });
-}
-export { getInitialCards, getProfileContent }
+};
+
+const updateProfileContent = (name, about) => {
+  return fetch(`${config.baseUrl}/users/me`, {
+    method: "PATCH",
+    headers: config.headers,
+    body: JSON.stringify({
+      name: name,
+      about: about
+    }) 
+  }).then((res) => {
+    if (res.ok) {
+      return res.json();
+    }
+    return Promise.reject(`Ошибка: ${res.status}`);
+  });
+};
+
+export { getInitialCards, getProfileContent, updateProfileContent };

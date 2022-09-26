@@ -28,7 +28,11 @@ import { resetValid, enableValidation } from "./components/validate.js";
 
 import { openPopup, closePopup } from "./components/modal.js";
 
-import { getInitialCards, getProfileContent } from "./components/api.js";
+import {
+  getInitialCards,
+  getProfileContent,
+  updateProfileContent,
+} from "./components/api.js";
 
 /* функция открытия попапа профиля*/
 function openProfileEdit() {
@@ -57,9 +61,10 @@ function togglePopupImage(link, title) {
 /* функция отправки формы профиля */
 function handleProfileFormSubmit(evt) {
   evt.preventDefault();
-  profileName.textContent = formItemName.value;
-  profileBio.textContent = formItemBio.value;
-
+  updateProfileContent(formItemName.value, formItemBio.value).then((result) => {
+    profileName.textContent = result.name;
+    profileBio.textContent = result.about;
+  });
   closePopup(popupBio);
 }
 
@@ -88,11 +93,10 @@ getInitialCards().then((result) => {
 });
 
 /* Загружаем информацию о пользователе с сервера */
-getProfileContent()
-  .then((result) => {    
-    profileName.textContent = result.name;
-    profileBio.textContent = result.about;
-    profileAvatar.src = result.avatar;
+getProfileContent().then((result) => {
+  profileName.textContent = result.name;
+  profileBio.textContent = result.about;
+  profileAvatar.src = result.avatar;
 });
 
 enableValidation({
