@@ -32,6 +32,7 @@ import {
   getInitialCards,
   getProfileContent,
   updateProfileContent,
+  postNewCard
 } from "./components/api.js";
 
 /* функция открытия попапа профиля*/
@@ -71,11 +72,20 @@ function handleProfileFormSubmit(evt) {
 /* функция отправки формы карточки */
 function handleImageFormSubmit(evt) {
   evt.preventDefault();
-  const place = createCard({
+  postNewCard(formItemPlace.value, formItemLink.value)
+    .then((result) => {
+      const place = createCard({
+        name: result.name,
+        link: result.link,
+      });
+      photoGrid.prepend(place);
+    })
+
+  /* const place = createCard({
     name: formItemPlace.value,
     link: formItemLink.value,
   });
-  photoGrid.prepend(place);
+  photoGrid.prepend(place); */
   closePopup(popupPlace);
   popupFormPlace.reset();
 }
