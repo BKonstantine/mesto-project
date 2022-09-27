@@ -1,5 +1,7 @@
 import { cardTemplate } from "./variables.js";
 
+import { getProfileContent } from "./api.js";
+
 import { togglePopupImage } from "../index.js";
 
 /* функция создания карточки */
@@ -17,6 +19,12 @@ function createCard(item) {
   cardItemLikeCounter.textContent = item.likes.length;
   cardItemImage.src = item.link;
   cardItemImage.alt = item.name;
+
+  getProfileContent().then((result) => {
+    if (result._id !== item.owner._id) {
+      cardItemTrash.classList.add("card__trash_hidden");
+    }
+  });
 
   /* добавляем обработчики событий */
   cardItemTrash.addEventListener("click", () => deleteItem(cardItem));

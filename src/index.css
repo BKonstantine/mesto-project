@@ -39,6 +39,7 @@
 @import url(./blocks/card/__like-counter/card__like-counter.css);
 @import url(./blocks/card/__like/_active/card__like_active.css);
 @import url(./blocks/card/__trash/card__trash.css);
+@import url(./blocks/card/__trash/_hidden/card__trash_hidden.css);
 
 /* стили блока footer */
 @import url(./blocks/footer/footer.css);

@@ -81,6 +81,8 @@ function handleImageFormSubmit(evt) {
       const place = createCard({
         name: result.name,
         link: result.link,
+        likes: result.likes,
+        owner: result.owner,
       });
       photoGrid.prepend(place);
     })
