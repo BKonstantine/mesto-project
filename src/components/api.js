@@ -60,4 +60,18 @@ const postNewCard = (place, link) => {
   });
 };
 
-export { getInitialCards, getProfileContent, updateProfileContent, postNewCard };
+const deleteCard = (id) => {
+  return fetch(`${config.baseUrl}/cards/${id}`, {
+    method: "DELETE",
+    headers: config.headers,    
+  }).then((res) => {
+    if (res.ok) {
+      return res.json();
+    }
+    return Promise.reject(`Ошибка: ${res.status}`);
+  });
+};
+
+
+
+export { getInitialCards, getProfileContent, updateProfileContent, postNewCard, deleteCard };

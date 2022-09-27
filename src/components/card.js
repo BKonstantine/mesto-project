@@ -1,6 +1,6 @@
 import { cardTemplate } from "./variables.js";
 
-import { getProfileContent } from "./api.js";
+import { getProfileContent, deleteCard } from "./api.js";
 
 import { togglePopupImage } from "../index.js";
 
@@ -20,14 +20,18 @@ function createCard(item) {
   cardItemImage.src = item.link;
   cardItemImage.alt = item.name;
 
-  getProfileContent().then((result) => {
-    if (result._id !== item.owner._id) {
-      cardItemTrash.classList.add("card__trash_hidden");
-    }
-  });
+  getProfileContent()
+    .then((result) => {
+      if (result._id !== item.owner._id) {
+        cardItemTrash.classList.add("card__trash_hidden");
+      }
+    })
+    .catch((err) => {
+      console.log(err);
+    });
 
   /* добавляем обработчики событий */
-  cardItemTrash.addEventListener("click", () => deleteItem(cardItem));
+  cardItemTrash.addEventListener("click", () => deleteItem(cardItem, item._id));
   cardItemLike.addEventListener("click", (e) =>
     e.target.classList.toggle("card__like_active")
   );
@@ -39,8 +43,14 @@ function createCard(item) {
 }
 
 /* функция удаления карточки */
-function deleteItem(item) {
-  item.remove();
+function deleteItem(item, id) {
+  deleteCard(id)
+    .then(() => {
+      item.remove();
+    })
+    .catch((err) => {
+      console.log(err);
+    });
 }
 
 export { createCard, deleteItem };

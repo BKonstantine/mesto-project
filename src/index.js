@@ -83,6 +83,7 @@ function handleImageFormSubmit(evt) {
         link: result.link,
         likes: result.likes,
         owner: result.owner,
+        _id: result._id,
       });
       photoGrid.prepend(place);
     })
