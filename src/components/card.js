@@ -10,9 +10,11 @@ function createCard(item) {
   const cardItemImage = cardItem.querySelector(".card__image");
   const cardItemTrash = cardItem.querySelector(".card__trash");
   const cardItemLike = cardItem.querySelector(".card__like");
+  const cardItemLikeCounter = cardItem.querySelector(".card__like-counter");
 
   /* наполняем содержимым */
   cardItemTitle.textContent = item.name;
+  cardItemLikeCounter.textContent = item.likes.length;
   cardItemImage.src = item.link;
   cardItemImage.alt = item.name;
 
