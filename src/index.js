@@ -32,7 +32,7 @@ import {
   getInitialCards,
   getProfileContent,
   updateProfileContent,
-  postNewCard
+  postNewCard,
 } from "./components/api.js";
 
 /* функция открытия попапа профиля*/
@@ -62,10 +62,14 @@ function togglePopupImage(link, title) {
 /* функция отправки формы профиля */
 function handleProfileFormSubmit(evt) {
   evt.preventDefault();
-  updateProfileContent(formItemName.value, formItemBio.value).then((result) => {
-    profileName.textContent = result.name;
-    profileBio.textContent = result.about;
-  });
+  updateProfileContent(formItemName.value, formItemBio.value)
+    .then((result) => {
+      profileName.textContent = result.name;
+      profileBio.textContent = result.about;
+    })
+    .catch((err) => {
+      console.log(err);
+    });
   closePopup(popupBio);
 }
 
@@ -79,7 +83,10 @@ function handleImageFormSubmit(evt) {
         link: result.link,
       });
       photoGrid.prepend(place);
-    })  
+    })
+    .catch((err) => {
+      console.log(err);
+    });
   closePopup(popupPlace);
   popupFormPlace.reset();
 }
@@ -92,16 +99,24 @@ function renderCard(array) {
 }
 
 /* вставить стартовый нобор карточек */
-getInitialCards().then((result) => {
-  renderCard(result);
-});
+getInitialCards()
+  .then((result) => {
+    renderCard(result);
+  })
+  .catch((err) => {
+    console.log(err);
+  });
 
 /* Загружаем информацию о пользователе с сервера */
-getProfileContent().then((result) => {
-  profileName.textContent = result.name;
-  profileBio.textContent = result.about;
-  profileAvatar.src = result.avatar;
-});
+getProfileContent()
+  .then((result) => {
+    profileName.textContent = result.name;
+    profileBio.textContent = result.about;
+    profileAvatar.src = result.avatar;
+  })
+  .catch((err) => {
+    console.log(err);
+  });
 
 enableValidation({
   formSelector: ".popup__form",
