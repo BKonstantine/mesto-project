@@ -63,7 +63,7 @@ const postNewCard = (place, link) => {
 const deleteCard = (id) => {
   return fetch(`${config.baseUrl}/cards/${id}`, {
     method: "DELETE",
-    headers: config.headers,    
+    headers: config.headers,
   }).then((res) => {
     if (res.ok) {
       return res.json();
@@ -72,6 +72,36 @@ const deleteCard = (id) => {
   });
 };
 
+const putLikeCard = (id) => {
+  return fetch(`${config.baseUrl}/cards/likes/${id}`, {
+    method: "PUT",
+    headers: config.headers,
+  }).then((res) => {
+    if (res.ok) {
+      return res.json();
+    }
+    return Promise.reject(`Ошибка: ${res.status}`);
+  });
+};
 
+const deleteLikeCard = (id) => {
+  return fetch(`${config.baseUrl}/cards/likes/${id}`, {
+    method: "DELETE",
+    headers: config.headers,
+  }).then((res) => {
+    if (res.ok) {
+      return res.json();
+    }
+    return Promise.reject(`Ошибка: ${res.status}`);
+  });
+};
 
-export { getInitialCards, getProfileContent, updateProfileContent, postNewCard, deleteCard };
+export {
+  getInitialCards,
+  getProfileContent,
+  updateProfileContent,
+  postNewCard,
+  deleteCard,
+  putLikeCard,
+  deleteLikeCard,
+};
