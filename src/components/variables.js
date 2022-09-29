@@ -47,15 +47,17 @@ const profile = document.querySelector(".profile");
 const popupBio = document.querySelector("#popup-bio");
 const popupPlace = document.querySelector("#popup-place");
 const popupImage = document.querySelector("#popup-image");
+const popupAvatar = document.querySelector("#popup-avatar");
 const popups = document.querySelectorAll(".popup");
 
 /* получаем доступ к кнопкам edit, close , add*/
 const buttonEdit = profile.querySelector(".profile__edit-button");
 const buttonAdd = profile.querySelector(".profile__add-button");
 
-/* получаем доступ к name и bio пользователя */
+/* получаем доступ к name, bio и avatar пользователя */
 const profileName = profile.querySelector(".profile__name");
 const profileBio = profile.querySelector(".profile__bio");
+const profileAvatar = profile.querySelector(".profile__avatar");
 
 /* получаем доступ к карточке и ее названию в попапе*/
 const popupImagePlace = popupImage.querySelector(".popup__image-place");
@@ -68,6 +70,10 @@ const formItemBio = popupBio.querySelector(".popup__input_value_bio");
 const popupFormPlace = popupPlace.querySelector(".popup__form-place");
 const formItemPlace = popupPlace.querySelector(".popup__input_value_place");
 const formItemLink = popupPlace.querySelector(".popup__input_value_link");
+const popupFormAvatar = popupAvatar.querySelector(".popup__form-avatar");
+const formItemLinkAvatar = popupFormAvatar.querySelector(
+  ".popup__input_value_link-avatar"
+);
 
 export {
   validationResetSetting,
@@ -78,11 +84,13 @@ export {
   popupBio,
   popupPlace,
   popupImage,
+  popupAvatar,
   popups,
   buttonEdit,
   buttonAdd,
   profileName,
   profileBio,
+  profileAvatar,
   popupImagePlace,
   popupImageTitle,
   popupFormBio,
@@ -91,4 +99,6 @@ export {
   popupFormPlace,
   formItemPlace,
   formItemLink,
+  popupFormAvatar,
+  formItemLinkAvatar,
 };
