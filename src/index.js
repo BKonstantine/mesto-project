@@ -69,9 +69,19 @@ function togglePopupImage(link, title) {
   openPopup(popupImage);
 }
 
+function renderLoading(isLoading, form) {
+  const button = form.querySelector(".popup__button-dot");
+  if (isLoading) {
+    button.classList.remove("popup__button-dot_loading");
+  } else {
+    button.classList.add("popup__button-dot_loading");
+  }
+}
+
 /* функция отправки формы профиля */
-function handleProfileFormSubmit(evt) {
+function handleProfileFormSubmit(evt) {  
   evt.preventDefault();
+  renderLoading(true, popupFormBio);
   updateProfileContent(formItemName.value, formItemBio.value)
     .then((result) => {
       profileName.textContent = result.name;
@@ -79,6 +89,9 @@ function handleProfileFormSubmit(evt) {
     })
     .catch((err) => {
       console.log(err);
+    })
+    .finally(() => {
+      renderLoading(false, popupFormBio);
     });
   closePopup(popupBio);
 }
@@ -86,6 +99,7 @@ function handleProfileFormSubmit(evt) {
 /* функция отправки формы карточки */
 function handleImageFormSubmit(evt) {
   evt.preventDefault();
+  renderLoading(true, popupFormPlace);
   postNewCard(formItemPlace.value, formItemLink.value)
     .then((result) => {
       const place = createCard({
@@ -99,6 +113,9 @@ function handleImageFormSubmit(evt) {
     })
     .catch((err) => {
       console.log(err);
+    })
+    .finally(() => {
+      renderLoading(false, popupFormPlace);
     });
   closePopup(popupPlace);
   popupFormPlace.reset();
@@ -107,12 +124,16 @@ function handleImageFormSubmit(evt) {
 /* функция отправки формы аватара */
 function handleAvatarFormSubmit(evt) {
   evt.preventDefault();
+  renderLoading(true, popupFormAvatar);
   patchNewAvatar(formItemLinkAvatar.value)
     .then((result) => {
       profileAvatar.src = result.avatar;
     })
     .catch((err) => {
       console.log(err);
+    })
+    .finally(() => {
+      renderLoading(false, popupFormAvatar);
     });
   closePopup(popupAvatar);
   popupFormAvatar.reset();
