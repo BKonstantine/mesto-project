@@ -36,6 +36,7 @@ import {
   getProfileContent,
   updateProfileContent,
   postNewCard,
+  patchNewAvatar,
 } from "./components/api.js";
 
 /* функция открытия попапа профиля*/
@@ -106,6 +107,13 @@ function handleImageFormSubmit(evt) {
 /* функция отправки формы аватара */
 function handleAvatarFormSubmit(evt) {
   evt.preventDefault();
+  patchNewAvatar(formItemLinkAvatar.value)
+    .then((result) => {
+      profileAvatar.src = result.avatar;
+    })
+    .catch((err) => {
+      console.log(err);
+    });
   closePopup(popupAvatar);
   popupFormAvatar.reset();
 }
@@ -153,6 +161,7 @@ buttonAdd.addEventListener("click", openAddCard);
 profileAvatar.addEventListener("click", openAvatarEdit);
 popupFormBio.addEventListener("submit", handleProfileFormSubmit);
 popupFormPlace.addEventListener("submit", handleImageFormSubmit);
+popupFormAvatar.addEventListener("submit", handleAvatarFormSubmit);
 
 popups.forEach((popup) => {
   popup.addEventListener("click", (evt) => {

@@ -83,7 +83,6 @@ function setupLike(evt, id, counter) {
   }
 }
 
-
 /* функция проверки наличия лайков пользователя */
 function checkLike(res, like) {
   if (res.likes.some((item) => item.name === profileName.textContent)) {
