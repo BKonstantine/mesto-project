@@ -18,6 +18,7 @@
 
 /* стили блока profile */
 @import url(./blocks/profile/profile.css);
+@import url(./blocks/profile/__avatar-container/profile__avatar-container.css);
 @import url(./blocks/profile/__avatar/profile__avatar.css);
 @import url(./blocks/profile/__info/profile__info.css);
 @import url(./blocks/profile/__content/profile__content.css);
