@@ -6,6 +6,7 @@ import {
   popupBio,
   popupPlace,
   popupImage,
+  popupAvatar,
   popups,
   buttonEdit,
   buttonAdd,
@@ -20,6 +21,8 @@ import {
   popupFormPlace,
   formItemPlace,
   formItemLink,
+  popupFormAvatar,
+  formItemLinkAvatar,
 } from "./components/variables.js";
 
 import { createCard } from "./components/card.js";
@@ -48,6 +51,12 @@ function openAddCard() {
   openPopup(popupPlace);
   popupFormPlace.reset();
   resetValid(validationResetSetting, popupPlace);
+}
+
+function openAvatarEdit() {
+  openPopup(popupAvatar);
+  popupFormAvatar.reset();
+  resetValid(validationResetSetting, popupAvatar);
 }
 
 /* функция добавления и закрытия попапа для изображений */
@@ -93,6 +102,14 @@ function handleImageFormSubmit(evt) {
   closePopup(popupPlace);
   popupFormPlace.reset();
 }
+
+/* функция отправки формы аватара */
+function handleAvatarFormSubmit(evt) {
+  evt.preventDefault();
+  closePopup(popupAvatar);
+  popupFormAvatar.reset();
+}
+
 /* функция отрисовки карточки */
 function renderCard(array) {
   const cardList = array.map((item) => {
@@ -133,6 +150,7 @@ enableValidation({
 /* добавляем обработчики событий */
 buttonEdit.addEventListener("click", openProfileEdit);
 buttonAdd.addEventListener("click", openAddCard);
+profileAvatar.addEventListener("click", openAvatarEdit);
 popupFormBio.addEventListener("submit", handleProfileFormSubmit);
 popupFormPlace.addEventListener("submit", handleImageFormSubmit);
 
