@@ -79,13 +79,14 @@ function renderLoading(isLoading, form) {
 }
 
 /* функция отправки формы профиля */
-function handleProfileFormSubmit(evt) {  
+function handleProfileFormSubmit(evt) {
   evt.preventDefault();
   renderLoading(true, popupFormBio);
   updateProfileContent(formItemName.value, formItemBio.value)
     .then((result) => {
       profileName.textContent = result.name;
       profileBio.textContent = result.about;
+      closePopup(popupBio);
     })
     .catch((err) => {
       console.log(err);
@@ -93,7 +94,6 @@ function handleProfileFormSubmit(evt) {
     .finally(() => {
       renderLoading(false, popupFormBio);
     });
-  closePopup(popupBio);
 }
 
 /* функция отправки формы карточки */
@@ -110,6 +110,7 @@ function handleImageFormSubmit(evt) {
         _id: result._id,
       });
       photoGrid.prepend(place);
+      closePopup(popupPlace);
     })
     .catch((err) => {
       console.log(err);
@@ -117,8 +118,6 @@ function handleImageFormSubmit(evt) {
     .finally(() => {
       renderLoading(false, popupFormPlace);
     });
-  closePopup(popupPlace);
-  popupFormPlace.reset();
 }
 
 /* функция отправки формы аватара */
@@ -128,6 +127,7 @@ function handleAvatarFormSubmit(evt) {
   patchNewAvatar(formItemLinkAvatar.value)
     .then((result) => {
       profileAvatar.src = result.avatar;
+      closePopup(popupAvatar);
     })
     .catch((err) => {
       console.log(err);
@@ -135,8 +135,6 @@ function handleAvatarFormSubmit(evt) {
     .finally(() => {
       renderLoading(false, popupFormAvatar);
     });
-  closePopup(popupAvatar);
-  popupFormAvatar.reset();
 }
 
 /* функция отрисовки карточки */
