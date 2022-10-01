@@ -32,12 +32,13 @@ import { resetValid, enableValidation } from "./components/validate.js";
 import { openPopup, closePopup } from "./components/modal.js";
 
 import {
-  getInitialCards,
-  getProfileContent,
+  getInfo,
   updateProfileContent,
   postNewCard,
   patchNewAvatar,
 } from "./components/api.js";
+
+let userId = null;
 
 /* функция открытия попапа профиля*/
 function openProfileEdit() {
@@ -145,26 +146,21 @@ function renderCard(array) {
   photoGrid.append(...cardList);
 }
 
-/* вставить стартовый нобор карточек */
-getInitialCards()
-  .then((result) => {
-    renderCard(result);
+/* Получаем информацию о карточках и данные пользователя с сервера */
+getInfo()
+  .then(([userData, cards]) => {
+    userId = userData._id;
+    profileName.textContent = userData.name;
+    profileBio.textContent = userData.about;
+    profileAvatar.src = userData.avatar;
+    renderCard(cards);
   })
   .catch((err) => {
     console.log(err);
   });
 
-/* Загружаем информацию о пользователе с сервера */
-getProfileContent()
-  .then((result) => {
-    profileName.textContent = result.name;
-    profileBio.textContent = result.about;
-    profileAvatar.src = result.avatar;
-  })
-  .catch((err) => {
-    console.log(err);
-  });
 
+/* Устанавливем валидацию полей ввода */  
 enableValidation({
   formSelector: ".popup__form",
   inputSelector: ".popup__input",
@@ -193,4 +189,4 @@ popups.forEach((popup) => {
   });
 });
 
-export { togglePopupImage };
+export { togglePopupImage, userId };

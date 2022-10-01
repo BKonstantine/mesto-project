@@ -25,6 +25,10 @@ const getProfileContent = () => {
   }).then(checkResponse);
 };
 
+function getInfo() {
+  return Promise.all([getProfileContent(), getInitialCards()]);
+}
+
 const updateProfileContent = (name, about) => {
   return fetch(`${config.baseUrl}/users/me`, {
     method: "PATCH",
@@ -79,8 +83,7 @@ const patchNewAvatar = (avatar) => {
 };
 
 export {
-  getInitialCards,
-  getProfileContent,
+  getInfo,
   updateProfileContent,
   postNewCard,
   deleteCard,

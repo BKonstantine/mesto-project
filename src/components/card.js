@@ -2,14 +2,9 @@ import { cardTemplate } from "./variables.js";
 
 import { profileName } from "./variables";
 
-import {
-  getProfileContent,
-  deleteCard,
-  putLikeCard,
-  deleteLikeCard,
-} from "./api.js";
+import { deleteCard, putLikeCard, deleteLikeCard } from "./api.js";
 
-import { togglePopupImage } from "../index.js";
+import { togglePopupImage, userId } from "../index.js";
 
 /* функция создания карточки */
 function createCard(item) {
@@ -27,15 +22,9 @@ function createCard(item) {
   cardItemImage.src = item.link;
   cardItemImage.alt = item.name;
 
-  getProfileContent()
-    .then((result) => {
-      if (result._id !== item.owner._id) {
-        cardItemTrash.classList.add("card__trash_hidden");
-      }
-    })
-    .catch((err) => {
-      console.log(err);
-    });
+  if (userId !== item.owner._id) {
+    cardItemTrash.classList.add("card__trash_hidden");
+  }
 
   checkLike(item, cardItemLike);
 
